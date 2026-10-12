@@ -2,7 +2,7 @@
 
 <p align="center">
   <img width="959" height="539" alt="Geometry Dash Webport" 
-    <img width="960" height="540" alt="Captura de pantalla 2026-10-11 145453" src="https://github.com/user-attachments/assets/a7435d3e-1e4c-4f30-abe6-0b1d974a010d" />
+<img width="960" height="540" alt="Geometry Dash Image" src="https://github.com/user-attachments/assets/11517712-f46a-4d53-944b-2c0b6d92cae9" />
 
 </p>
 
