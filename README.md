@@ -1,7 +1,9 @@
 # Geometry Dash Webport
 
 <p align="center">
-  <img width="959" height="539" alt="Geometry Dash Webport" src="https://github.com/user-attachments/assets/29f2a16f-8a2c-450f-8d58-47f2303b3991" />
+  <img width="959" height="539" alt="Geometry Dash Webport" 
+    <img width="960" height="540" alt="Captura de pantalla 2026-10-11 145453" src="https://github.com/user-attachments/assets/a7435d3e-1e4c-4f30-abe6-0b1d974a010d" />
+
 </p>
 
 > Geometry Dash webport es una versión de Geometry Dash adaptada para ejecutarse desde un navegador web, permitiendo jugar sin necesidad de instalar el juego.
