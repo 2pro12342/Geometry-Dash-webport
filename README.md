@@ -1,12 +1,13 @@
+[README.md](https://github.com/user-attachments/files/33630377/README.md)
 # Geometry Dash webport
 
 <p align="center">
   <img width="960" height="540" alt="Geometry Dash webport" src="https://github.com/user-attachments/assets/11517712-f46a-4d53-944b-2c0b6d92cae9" />
 </p>
 
-> Geometry Dash webport is an unofficial fan port of Geometry Dash adapted to run in a web browser. No installation required: just open the page and play.
+> Geometry Dash webport is a version of Geometry Dash adapted to run in a web browser. No installation required: just open the page and play.
 
-\---
+---
 
 ## ▶️ Play Now
 
@@ -16,9 +17,9 @@
 2. Wait for the game to finish loading.
 3. Enjoy Geometry Dash right from your browser!
 
-> \*\*Tip:\*\* The first load may take a little while. After that, your browser caches the game files, so later visits will be much faster.
+> **Tip:** The first load may take a little while. After that, your browser caches the game files, so later visits will be much faster.
 
-\---
+---
 
 ## 🔄 Updating
 
@@ -30,13 +31,12 @@ We recommend updating it:
 
 1. **Delete your old file.** It is no longer needed.
 2. Choose one of these options:
-
    * **Open the page:** just go to the [website](https://ale7208.github.io/Geometry-Dash-webport/). This is the easiest option.
    * **Download the new version:** open [index.html](index.html) in this repository, click the **Download raw file** button (the download icon at the top right of the file), and open the downloaded file in your browser.
 
 > Downloaded copies and forks don't update automatically. If you want the latest version, use the online link above.
 
-\---
+---
 
 ## ⚙️ Requirements
 
@@ -47,35 +47,35 @@ To run Geometry Dash webport, you need:
 * A compatible computer.
 * An Internet connection, since the game's resources are loaded from external servers.
 
-\---
+---
 
 ## 🌍 Compatibility
 
 Geometry Dash webport is designed to work on modern web browsers, including:
 
-|Browser|Compatibility|
-|-|-|
-|Google Chrome|Supported|
-|Microsoft Edge|Supported|
-|Mozilla Firefox|Supported|
-|Brave|Supported|
-|Other Chromium-based browsers|Likely|
+| Browser                           | Compatibility |
+| --------------------------------- | ------------- |
+| Google Chrome                     | Supported     |
+| Microsoft Edge                    | Supported     |
+| Mozilla Firefox                   | Supported     |
+| Brave                             | Supported     |
+| Other Chromium-based browsers     | Likely        |
 
 > ⚠️ Compatibility and performance may vary depending on the browser, the device, and the settings you use.
 
-\---
+---
 
 ## 🎮 Game Information
 
-|Feature|Details|
-|-|-|
-|**Name**|Geometry Dash webport|
-|**Type**|webport / HTML|
-|**Geometry Dash version**|2.2081|
-|**Platform**|Web browser|
-|**Language**|HTML5, JavaScript|
+| Feature                       | Details                   |
+| ----------------------------- | ------------------------- |
+| **Name**                      | Geometry Dash webport     |
+| **Type**                      | webport / HTML            |
+| **Geometry Dash version**     | 2.2081                    |
+| **Platform**                  | Web browser               |
+| **Language**                  | HTML5, JavaScript         |
 
-\---
+---
 
 ## 🛠️ Troubleshooting
 
@@ -90,7 +90,7 @@ If you run into problems while playing, try the following:
 
 > If the problems persist, they may be related to your browser or to the external service hosting the webport.
 
-\---
+---
 
 ## 📌 Important Notes
 
@@ -98,13 +98,10 @@ If you run into problems while playing, try the following:
 * The game's resources need an Internet connection to load.
 * Compatibility with all devices and browsers is not guaranteed.
 
-\---
+---
 
 ## 👤 Credits
 
 * **RobTop Games:** Creator of the original Geometry Dash.
-* **Bog:** Creator of the web port, adapting the game to run in a browser.
 
-This project is a fan-made port created for fans and is not affiliated with, endorsed by, or an official release of RobTop Games. Geometry Dash and its assets remain the property of their respective owners.
-
-[README.md](https://github.com/user-attachments/files/33630350/README.md)
+Geometry Dash is the property of its respective creator. This project is not an official version of RobTop Games.
