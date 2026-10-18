@@ -27,8 +27,7 @@
 1. Abre la carpeta donde extrajiste los archivos.
 2. Busca el archivo `Geometry Dash Webport.html`.
 3. Ábrelo con tu navegador web preferido.
-4. Haz clic en el botón **Load** o presiona la tecla `Espacio` para iniciar la carga.
-5. Espera a que el juego termine de cargar.
+5. Espera a que el juego carge.
 6. ¡Disfruta de Geometry Dash directamente desde tu navegador!
 
 > **Consejo:** Se recomienda utilizar un navegador actualizado para obtener una mejor compatibilidad y rendimiento.
