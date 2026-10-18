@@ -1,4 +1,3 @@
-[README.md](https://github.com/user-attachments/files/33630377/README.md)
 # Geometry Dash webport
 
 <p align="center">
