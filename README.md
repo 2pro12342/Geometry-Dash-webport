@@ -103,5 +103,6 @@ If you run into problems while playing, try the following:
 
 * **RobTop Games:** Creator of the original Geometry Dash.
 * **Bog:** Creator of the web port, adapting the game to run in a browser.
+* **Ale7208:** Improvements, bug fixes, and enhancements to the web port.
 
-Geometry Dash is the property of its respective creator. This project is not an official version of RobTop Games.
+Geometry Dash is the property of its respective creator. This project is an unofficial fan port and is not affiliated with or endorsed by RobTop Games.
