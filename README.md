@@ -30,7 +30,7 @@ We recommend updating it:
 
 1. **Delete your old file.** It is no longer needed.
 2. Choose one of these options:
-   * **Open the page:** just go to the [online version](https://ale7208.github.io/Geometry-Dash-webport/). This is the easiest option.
+   * **Open the page:** just go to the [website](https://ale7208.github.io/Geometry-Dash-webport/). This is the easiest option.
    * **Download the new version:** open [`index.html`](index.html) in this repository, click the **Download raw file** button (the download icon at the top right of the file), and open the downloaded file in your browser.
 
 > Downloaded copies and forks don't update automatically. If you want the latest version, use the online link above.
