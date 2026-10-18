@@ -4,7 +4,7 @@
   <img width="960" height="540" alt="Geometry Dash Webport" src="https://github.com/user-attachments/assets/11517712-f46a-4d53-944b-2c0b6d92cae9" />
 </p>
 
-> Geometry Dash Webport is a version of Geometry Dash adapted to run in a web browser, letting you play without installing or downloading anything.
+> Geometry Dash Webport is a version of Geometry Dash adapted to run in a web browser. No installation required: just open the page and play.
 
 ---
 
@@ -18,7 +18,22 @@
 
 > **Tip:** The first load may take a little while. After that, your browser caches the game files, so later visits will be much faster.
 
-> **Updates:** You don't need to download anything to get updates. Whenever an improvement is published, just reload the page (if you don't see the changes, press `Ctrl + F5`).
+---
+
+## 🔄 Updating
+
+You don't need to download anything to get updates. Whenever an improvement is published, just reload the page (if you don't see the changes, press `Ctrl + F5`).
+
+**Already have an old downloaded version?**
+
+We recommend updating it:
+
+1. **Delete your old file.** It is no longer needed.
+2. Choose one of these options:
+   * **Open the page:** just go to the [online version](https://ale7208.github.io/Geometry-Dash-webport/). This is the easiest option.
+   * **Download the new version:** open [`index.html`](index.html) in this repository, click the **Download raw file** button (the download icon at the top right of the file), and open the downloaded file in your browser.
+
+> Downloaded copies and forks don't update automatically. If you want the latest version, use the online link above.
 
 ---
 
@@ -71,6 +86,7 @@ If you run into problems while playing, try the following:
 * **Poor performance:** Close unnecessary applications and try a different browser.
 * **The game won't start:** Make sure JavaScript is enabled and try an up-to-date browser.
 * **I can't see the latest changes:** Force a reload with `Ctrl + F5` to clear the page cache.
+* **Errors with an old downloaded file:** Delete it and use the online version or the new `index.html` (see [Updating](#-updating)).
 
 > If the problems persist, they may be related to your browser or to the external service hosting the webport.
 
