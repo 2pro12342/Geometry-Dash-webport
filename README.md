@@ -1,10 +1,10 @@
-# Geometry Dash Webport
+# Geometry Dash webport
 
 <p align="center">
-  <img width="960" height="540" alt="Geometry Dash Webport" src="https://github.com/user-attachments/assets/11517712-f46a-4d53-944b-2c0b6d92cae9" />
+  <img width="960" height="540" alt="Geometry Dash webport" src="https://github.com/user-attachments/assets/11517712-f46a-4d53-944b-2c0b6d92cae9" />
 </p>
 
-> Geometry Dash Webport is a version of Geometry Dash adapted to run in a web browser. No installation required: just open the page and play.
+> Geometry Dash webport is a version of Geometry Dash adapted to run in a web browser. No installation required: just open the page and play.
 
 ---
 
@@ -39,7 +39,7 @@ We recommend updating it:
 
 ## ⚙️ Requirements
 
-To run Geometry Dash Webport, you need:
+To run Geometry Dash webport, you need:
 
 * A modern, up-to-date web browser.
 * JavaScript enabled.
@@ -50,7 +50,7 @@ To run Geometry Dash Webport, you need:
 
 ## 🌍 Compatibility
 
-Geometry Dash Webport is designed to work on modern web browsers, including:
+Geometry Dash webport is designed to work on modern web browsers, including:
 
 | Browser                           | Compatibility |
 | --------------------------------- | ------------- |
@@ -68,8 +68,8 @@ Geometry Dash Webport is designed to work on modern web browsers, including:
 
 | Feature                       | Details                   |
 | ----------------------------- | ------------------------- |
-| **Name**                      | Geometry Dash Webport     |
-| **Type**                      | Webport / HTML            |
+| **Name**                      | Geometry Dash webport     |
+| **Type**                      | webport / HTML            |
 | **Geometry Dash version**     | 2.2081                    |
 | **Platform**                  | Web browser               |
 | **Language**                  | HTML5, JavaScript         |
