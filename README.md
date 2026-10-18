@@ -1,36 +1,24 @@
 # Geometry Dash Webport
 
 <p align="center">
-  <img width="959" height="539" alt="Geometry Dash Webport" 
-<img width="960" height="540" alt="Geometry Dash Image" src="https://github.com/user-attachments/assets/11517712-f46a-4d53-944b-2c0b6d92cae9" />
-
+  <img width="960" height="540" alt="Geometry Dash Webport" src="https://github.com/user-attachments/assets/11517712-f46a-4d53-944b-2c0b6d92cae9" />
 </p>
 
-> Geometry Dash webport es una versión de Geometry Dash adaptada para ejecutarse desde un navegador web, permitiendo jugar sin necesidad de instalar el juego.
+> Geometry Dash webport es una versión de Geometry Dash adaptada para ejecutarse desde un navegador web, permitiendo jugar sin necesidad de instalar ni descargar nada.
 
 ---
 
-## 📥 Descarga e instalación
+## ▶️ Jugar ahora
 
-1. Accede a este repositorio de GitHub.
-2. Haz clic en el botón **Code**, ubicado en la parte superior.
-3. Selecciona **Download ZIP** para descargar los archivos.
-4. Extrae el contenido del archivo ZIP en una carpeta de tu computadora.
-5. ¡Ya tienes todo listo para ejecutar el juego!
+### 🌐 [Haz clic aquí para jugar](https://TU-USUARIO.github.io/TU-REPO/)
 
----
+1. Abre el enlace en tu navegador.
+2. Espera a que el juego termine de cargar.
+3. ¡Disfruta de Geometry Dash directamente desde tu navegador!
 
-## ▶️ Cómo jugar
+> **Consejo:** La primera carga puede tardar un poco. Después, el navegador guarda los archivos en caché y las siguientes visitas serán mucho más rápidas.
 
-### 💻 Ejecutar desde tu computadora
-
-1. Abre la carpeta donde extrajiste los archivos.
-2. Busca el archivo `Geometry Dash Webport.html`.
-3. Ábrelo con tu navegador web preferido.
-5. Espera a que el juego carge.
-6. ¡Disfruta de Geometry Dash directamente desde tu navegador!
-
-> **Consejo:** Se recomienda utilizar un navegador actualizado para obtener una mejor compatibilidad y rendimiento.
+> **Actualizaciones:** No necesitas descargar nada para actualizar. Cada vez que se publica una mejora, solo tienes que recargar la página (si no ves los cambios, pulsa `Ctrl + F5`).
 
 ---
 
@@ -38,62 +26,62 @@
 
 Para ejecutar Geometry Dash Webport, necesitas:
 
-*  Un navegador web moderno y actualizado.
-*  JavaScript habilitado.
-*  Una computadora compatible.
-*  Conexión a Internet, los recursos del juego requieren cargarse desde servidores externos.
+* Un navegador web moderno y actualizado.
+* JavaScript habilitado.
+* Una computadora compatible.
+* Conexión a Internet, ya que los recursos del juego se cargan desde servidores externos.
 
 ---
 
-##  Compatibilidad
+## 🌍 Compatibilidad
 
 Geometry Dash Webport está diseñado para funcionar en navegadores web modernos, entre ellos:
 
-| Navegador                                | Compatibilidad |
-| ---------------------------------------- | -------------- |
-|  Google Chrome                         | Compatible     |
-|  Microsoft Edge                        | Compatible     |
-|  Mozilla Firefox                       | Compatible     |
-|  Brave                                 | Compatible     |
-|  Otros navegadores basados en Chromium | Posible        |
+| Navegador                              | Compatibilidad |
+| -------------------------------------- | -------------- |
+| Google Chrome                          | Compatible     |
+| Microsoft Edge                         | Compatible     |
+| Mozilla Firefox                        | Compatible     |
+| Brave                                  | Compatible     |
+| Otros navegadores basados en Chromium  | Posible        |
 
 > ⚠️ La compatibilidad y el rendimiento pueden variar según el navegador, el dispositivo y la configuración utilizada.
 
 ---
 
-##  Información del juego
+## 🎮 Información del juego
 
-| Característica               | Detalles                            |
-| ---------------------------- | ----------------------------------- |
-| **Nombre**                   | Geometry Dash webport               |
-| **Tipo**                     | Webport / HTML                      |
-| **Versión de Geometry Dash** | 2.2081                              |
-| **Plataforma**               | Navegador web                       |
-| **Lenguaje**                 | HTML5, JavaScript                   |
-| **Ejecución**                | Desde un archivo HTML               |
+| Característica               | Detalles                  |
+| ---------------------------- | ------------------------- |
+| **Nombre**                   | Geometry Dash webport     |
+| **Tipo**                     | Webport / HTML            |
+| **Versión de Geometry Dash** | 2.2081                    |
+| **Plataforma**               | Navegador web             |
+| **Lenguaje**                 | HTML5, JavaScript         |
+| **Ejecución**                | En línea (GitHub Pages)   |
 
 ---
 
-## ⚠️ Solución de problemas
+## 🛠️ Solución de problemas
 
-Si experimentas problemas al ejecutar el juego, puedes probar las siguientes soluciones:
+Si experimentas problemas al ejecutar el juego, puedes probar lo siguiente:
 
-* ** Pantalla en blanco:** Actualiza la página o vuelve a abrir el archivo HTML.
-* ** Carga infinita:** Comprueba tu conexión a Internet y espera unos instantes.
-* ** Bajo rendimiento:** Cierra las aplicaciones innecesarias y prueba con otro navegador.
-* ** El juego no inicia:** Comprueba que JavaScript esté habilitado e intenta utilizar un navegador actualizado.
-* ** Errores al cargar:** Verifica que todos los archivos del ZIP se hayan extraído correctamente.
+* **Pantalla en blanco:** Recarga la página con `Ctrl + F5`.
+* **Carga infinita:** Comprueba tu conexión a Internet y espera unos instantes.
+* **Bajo rendimiento:** Cierra las aplicaciones innecesarias y prueba con otro navegador.
+* **El juego no inicia:** Comprueba que JavaScript esté habilitado e intenta con un navegador actualizado.
+* **No veo los últimos cambios:** Fuerza la recarga con `Ctrl + F5` para limpiar la caché de la página.
 
-> Si los problemas persisten, es posible que estén relacionados con el archivo, el navegador o el servicio utilizado para ejecutar el webport.
+> Si los problemas persisten, es posible que estén relacionados con el navegador o con el servicio externo que aloja el webport.
 
 ---
 
 ## 📌 Notas importantes
 
 * El rendimiento depende de las características del dispositivo y del navegador.
-* Algunos recursos pueden necesitar una conexión a Internet para cargarse.
+* Los recursos del juego necesitan conexión a Internet para cargarse.
 * No se garantiza la compatibilidad con todos los dispositivos o navegadores.
-* Esta versión está destinada a ejecutarse desde un entorno web.
+* Este proyecto está diseñado para ejecutarse en computadora.
 
 ---
 
