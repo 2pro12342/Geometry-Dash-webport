@@ -102,5 +102,6 @@ If you run into problems while playing, try the following:
 ## 👤 Credits
 
 * **RobTop Games:** Creator of the original Geometry Dash.
+* **Bog:** Creator of the web port, adapting the game to run in a browser.
 
 Geometry Dash is the property of its respective creator. This project is not an official version of RobTop Games.
