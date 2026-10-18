@@ -96,7 +96,6 @@ If you run into problems while playing, try the following:
 * Performance depends on your device and browser.
 * The game's resources need an Internet connection to load.
 * Compatibility with all devices and browsers is not guaranteed.
-* This project is designed to run on a computer.
 
 ---
 
