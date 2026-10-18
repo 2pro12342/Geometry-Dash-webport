@@ -73,7 +73,6 @@ Geometry Dash Webport is designed to work on modern web browsers, including:
 | **Geometry Dash version**     | 2.2081                    |
 | **Platform**                  | Web browser               |
 | **Language**                  | HTML5, JavaScript         |
-| **Execution**                 | Online (GitHub Pages)     |
 
 ---
 
