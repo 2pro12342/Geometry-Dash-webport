@@ -1219,13 +1219,12 @@ self.onmessage = async ({ data: e }) => {
           Module.FS.chdir("/Resources");
           await restoreSaves();
           setLoadingProgress(98);
-          Module._gd_autosave_set(1);
+          Module._gd_autosave_set(0);
           window.__gdInputReady = true;
           if (window.__gdAckFocus) {
             window.__gdAckFocus();
           }
           window.__gdGameStarted = true;
-          setInterval(requestSave, 10000);
           const bootResult = Module._gd_boot();
           setLoadingProgress(99);
           if (bootResult && bootResult.catch) {
@@ -1290,7 +1289,6 @@ self.onmessage = async ({ data: e }) => {
         requestSave();
       }
     });
-    window.addEventListener("pagehide", requestSave);
     window.addEventListener("beforeunload", (unloadEvent) => {
       if (!window.__gdGameStarted) {
         return;
