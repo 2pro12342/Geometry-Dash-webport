@@ -554,6 +554,7 @@ self.onmessage = async ({ data: e }) => {
       let pausedTotal = 0,
         hiddenSince = null,
         hiddenDateSince = null;
+      window.__gdAutoPauseEnabled = false;
       function adjustedPerformanceTime(realTime) {
         return (hiddenSince === null ? realTime : hiddenSince) - pausedTotal;
       }
@@ -616,6 +617,9 @@ self.onmessage = async ({ data: e }) => {
         }
       } catch (audioContextError) {}
       document.addEventListener("visibilitychange", function () {
+        if (!window.__gdAutoPauseEnabled) {
+          return;
+        }
         try {
           if (document.hidden) {
             if (hiddenSince === null) {
@@ -1248,6 +1252,7 @@ self.onmessage = async ({ data: e }) => {
                 if (!overlayHidden && !loadingOverlayFailed) {
                   overlayHidden = true;
                   loadingOverlay.style.display = "none";
+                  window.__gdAutoPauseEnabled = true;
                 }
               }
               setTimeout(() => {
@@ -1609,7 +1614,24 @@ self.onmessage = async ({ data: e }) => {
       Module.wasmBinary = wasmBinary;
       Module.getPreloadedPackage = () => dataPackage;
       const scriptEl = document.createElement("script");
-      scriptEl.textContent = new TextDecoder().decode(glueScript);
+      const decodedGlue = new TextDecoder().decode(glueScript),
+        seekAfterStop =
+          "c.base=b;c.pausedAt=b;c.ended=0;if(!c.paused&&!c.pausedByGroup&&s3&&s3.buf&&ctx){var src2=ctx.createBufferSource();",
+        seekAfterStopWithGain =
+          "c.base=b;c.pausedAt=b;c.ended=0;if(!c.paused&&!c.pausedByGroup&&s3&&s3.buf&&ctx){if(c.gain)c.gain.gain.value=c.vol;var src2=ctx.createBufferSource();",
+        seekAfterStopCount = decodedGlue.split(seekAfterStop).length - 1;
+      if (seekAfterStopCount === 1) {
+        scriptEl.textContent = decodedGlue.replace(
+          seekAfterStop,
+          seekAfterStopWithGain,
+        );
+      } else {
+        console.warn(
+          "Audio restart fix was not applied; unexpected audio bridge seek code",
+          seekAfterStopCount,
+        );
+        scriptEl.textContent = decodedGlue;
+      }
       document.body.appendChild(scriptEl);
     }
     startGame().catch(startupError);
