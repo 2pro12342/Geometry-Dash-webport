@@ -97,7 +97,7 @@ Found a bug while playing? You can report it in the repository's Issues section 
 
 **[Report a Bug](https://github.com/Ale7208/Geometry-Dash-webport/issues)**
 
-When reporting a bug, try to explain what happened and how to reproduce it. If possible, include a screenshot.
+When reporting a bug, please explain what happened and, if possible, how to reproduce it. **If the bug is visual, please include a screenshot** to help identify the issue.
 
 ## Credits
 
