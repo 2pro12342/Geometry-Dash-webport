@@ -4,105 +4,86 @@
   <img width="960" height="540" alt="Geometry Dash webport" src="https://github.com/user-attachments/assets/11517712-f46a-4d53-944b-2c0b6d92cae9" />
 </p>
 
-> Geometry Dash webport is a version of Geometry Dash adapted to run in a web browser. No installation required: just open the page and play.
+A browser version of Geometry Dash that lets you play without installing anything.
 
----
+## Play Online
 
-## ▶️ Play Now
+**[Play Geometry Dash](https://ale7208.github.io/Geometry-Dash-webport/)**
 
-### 🌐 [Click here to play](https://ale7208.github.io/Geometry-Dash-webport/)
+Open the link, wait for the game to load, and start playing.
 
-1. Open the link in your browser.
-2. Wait for the game to finish loading.
-3. Enjoy Geometry Dash right from your browser!
+The first load may take a bit longer. Your browser may cache some files, making future visits faster.
 
-> **Tip:** The first load may take a little while. After that, your browser caches the game files, so later visits will be much faster.
+## Updating
 
----
+The online version is updated whenever changes are published. Reload the page to get the latest version. If the changes don't appear, press `Ctrl + F5`.
 
-## 🔄 Updating
+### Using a downloaded copy?
 
-You don't need to download anything to get updates. Whenever an improvement is published, just reload the page (if you don't see the changes, press `Ctrl + F5`).
+Downloaded files and forks don't update automatically. To get the latest version, you can:
 
-**Already have an old downloaded version?**
+* **Play online:** Open the [webport](https://ale7208.github.io/Geometry-Dash-webport/).
+* **Download the latest file:** Open [`index.html`](index.html) in this repository, click the download icon, and open the file in your browser.
 
-We recommend updating it:
+You can delete older downloaded copies once you've switched to the new version.
 
-1. **Delete your old file.** It is no longer needed.
-2. Choose one of these options:
-   * **Open the page:** just go to the [website](https://ale7208.github.io/Geometry-Dash-webport/). This is the easiest option.
-   * **Download the new version:** open [index.html](index.html) in this repository, click the **Download raw file** button (the download icon at the top right of the file), and open the downloaded file in your browser.
+## Requirements
 
-> Downloaded copies and forks don't update automatically. If you want the latest version, use the online link above.
-
----
-
-## ⚙️ Requirements
-
-To run Geometry Dash webport, you need:
-
-* A modern, up-to-date web browser.
+* An up-to-date web browser.
 * JavaScript enabled.
 * A compatible computer.
-* An Internet connection, since the game's resources are loaded from external servers.
+* An Internet connection to load the game's external resources.
 
----
+## Browser Compatibility
 
-## 🌍 Compatibility
+The webport is intended for modern browsers.
 
-Geometry Dash webport is designed to work on modern web browsers, including:
+| Browser                       | Compatibility    |
+| ----------------------------- | ---------------- |
+| Google Chrome                 | Supported        |
+| Microsoft Edge                | Supported        |
+| Mozilla Firefox               | Supported        |
+| Brave                         | Supported        |
+| Other Chromium-based browsers | Likely supported |
 
-| Browser                           | Compatibility |
-| --------------------------------- | ------------- |
-| Google Chrome                     | Supported     |
-| Microsoft Edge                    | Supported     |
-| Mozilla Firefox                   | Supported     |
-| Brave                             | Supported     |
-| Other Chromium-based browsers     | Likely        |
+Performance and compatibility may vary depending on your browser, device, and settings.
 
-> ⚠️ Compatibility and performance may vary depending on the browser, the device, and the settings you use.
+## Game Information
 
----
+| Feature               | Details               |
+| --------------------- | --------------------- |
+| Name                  | Geometry Dash webport |
+| Type                  | Webport / HTML        |
+| Geometry Dash version | 2.2081                |
+| Platform              | Web browser           |
+| Technologies          | HTML5, JavaScript     |
 
-## 🎮 Game Information
+## Troubleshooting
 
-| Feature                       | Details                   |
-| ----------------------------- | ------------------------- |
-| **Name**                      | Geometry Dash webport     |
-| **Type**                      | webport / HTML            |
-| **Geometry Dash version**     | 2.2081                    |
-| **Platform**                  | Web browser               |
-| **Language**                  | HTML5, JavaScript         |
+**Blank screen:** Reload the page using `Ctrl + F5`.
 
----
+**The game gets stuck loading:** Check your Internet connection and try again.
 
-## 🛠️ Troubleshooting
+**Low performance:** Close other applications or try another browser.
 
-If you run into problems while playing, try the following:
+**The game won't start:** Make sure JavaScript is enabled and your browser is up to date.
 
-* **Blank screen:** Reload the page with `Ctrl + F5`.
-* **Endless loading:** Check your Internet connection and wait a few moments.
-* **Poor performance:** Close unnecessary applications and try a different browser.
-* **The game won't start:** Make sure JavaScript is enabled and try an up-to-date browser.
-* **I can't see the latest changes:** Force a reload with `Ctrl + F5` to clear the page cache.
-* **Errors with an old downloaded file:** Delete it and use the online version or the new `index.html` (see [Updating](#-updating)).
+**Changes aren't showing up:** Force a reload with `Ctrl + F5`.
 
-> If the problems persist, they may be related to your browser or to the external service hosting the webport.
+**An old downloaded copy isn't working:** Try the online version or download the latest `index.html` file.
 
----
+If the problem continues, it could be related to your browser or the external service hosting the game.
 
-## 📌 Important Notes
+## Notes
 
 * Performance depends on your device and browser.
-* The game's resources need an Internet connection to load.
-* Compatibility with all devices and browsers is not guaranteed.
+* An Internet connection is required to load the game's resources.
+* Not every device or browser is guaranteed to work correctly.
 
----
-
-## 👤 Credits
+## Credits
 
 * **RobTop Games:** Creator of the original Geometry Dash.
-* **Bog:** Creator of the web port, adapting the game to run in a browser.
-* **Ale7208:** Improvements, bug fixes, and enhancements to the web port.
+* **Bog:** Creator of the web port.
+* **Ale7208:** Improvements and bug fixes.
 
-Geometry Dash is the property of its respective creator. This project is an unofficial fan port and is not affiliated with or endorsed by RobTop Games.
+Geometry Dash belongs to its respective creator. This is an unofficial fan port and is not affiliated with or endorsed by RobTop Games.
