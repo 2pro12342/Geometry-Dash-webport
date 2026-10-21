@@ -23,7 +23,7 @@ The online version is updated whenever changes are published. Reload the page to
 Downloaded files and forks don't update automatically. To get the latest version, you can:
 
 * **Play online:** Open the [webport](https://ale7208.github.io/Geometry-Dash-webport/).
-* **Download the latest file:** Open [`index.html`](index.html) in this repository, click the download icon, and open the file in your browser.
+* **Download the latest file:** Open [index.html](index.html) in this repository, click the download icon, and open the file in your browser.
 
 You can delete older downloaded copies once you've switched to the new version.
 
