@@ -31,12 +31,12 @@ You can delete older downloaded copies once you've switched to the new version.
 
 * An up-to-date web browser.
 * JavaScript enabled.
-* A compatible computer.
+* A compatible computer, tablet, or smartphone.
 * An Internet connection to load the game's external resources.
 
 ## Browser Compatibility
 
-The webport is intended for modern browsers.
+The webport is intended for modern browsers on both desktop and mobile devices.
 
 | Browser                       | Compatibility    |
 | ----------------------------- | ---------------- |
@@ -46,7 +46,14 @@ The webport is intended for modern browsers.
 | Brave                         | Supported        |
 | Other Chromium-based browsers | Likely supported |
 
-Performance and compatibility may vary depending on your browser, device, and settings.
+The game can also be played on mobile phones. Performance, controls, and compatibility may vary depending on your device and browser.
+
+## Notes
+
+* The game works on compatible computers, tablets, and smartphones.
+* Performance depends on your device and browser.
+* An Internet connection is required to load the game's resources.
+* Some features or controls may work differently on mobile devices.
 
 ## Game Information
 
