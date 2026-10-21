@@ -91,6 +91,14 @@ Keep these limitations in mind:
 
 Offline availability depends on your browser retaining the necessary files. It is not guaranteed if the cache is cleared or the browser removes stored resources.
 
+## Reporting Bugs
+
+Found a bug while playing? You can report it in the repository's Issues section to help improve the game.
+
+**[Report a Bug](https://github.com/Ale7208/Geometry-Dash-webport/issues)**
+
+When reporting a bug, try to explain what happened and how to reproduce it. If possible, include a screenshot.
+
 ## Credits
 
 * **RobTop Games:** Creator of the original Geometry Dash.
