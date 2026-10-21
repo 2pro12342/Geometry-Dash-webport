@@ -99,6 +99,8 @@ Found a bug while playing? You can report it in the repository's Issues section 
 
 When reporting a bug, please explain what happened and, if possible, how to reproduce it. **If the bug is visual, please include a screenshot** to help identify the issue.
 
+**Note:** I speak Spanish, so if your issue is written in another language, I will use a translator to understand and review it. However, reports in Spanish are preferred.
+
 ## Credits
 
 * **RobTop Games:** Creator of the original Geometry Dash.
