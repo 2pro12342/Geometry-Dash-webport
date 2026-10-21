@@ -8,7 +8,7 @@
 
 ## Play Online
 
-**[Play Geometry Dash](https://ale7208.github.io/Geometry-Dash-webport/)**
+**[Play Geometry Dash](https://gd-webport.pages.dev/)**
 
 Open the link, wait for the game to load, and start playing.
 
@@ -22,7 +22,7 @@ The online version is updated whenever changes are published. Reload the page to
 
 Downloaded files and forks don't update automatically. To get the latest version, you can:
 
-* **Play online:** Open the [webport](https://ale7208.github.io/Geometry-Dash-webport/).
+* **Play online:** Open the [webport](https://gd-webport.pages.dev/).
 * **Download the latest file:** Open [index.html](index.html) in this repository, click the download icon, and open the file in your browser.
 
 The version update notice is only displayed when an Internet connection is available.
