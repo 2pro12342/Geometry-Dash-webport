@@ -4,7 +4,7 @@
   <img width="960" height="540" alt="Geometry Dash webport" src="https://github.com/user-attachments/assets/11517712-f46a-4d53-944b-2c0b6d92cae9" />
 </p>
 
-A browser version of Geometry Dash that lets you play without installing anything.
+> A browser version of Geometry Dash that lets you play without installing anything.
 
 ## Play Online
 
