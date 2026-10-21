@@ -12,7 +12,7 @@ A browser version of Geometry Dash that lets you play without installing anythin
 
 Open the link, wait for the game to load, and start playing.
 
-The first load may take a bit longer. Your browser may cache some files, making future visits faster.
+The first load requires an Internet connection. To play offline, download index.html, open it in your browser once while online, and let the game finish loading. After that, you can open the same file without a connection. The online version at the link above always needs an Internet connection.
 
 ## Updating
 
@@ -23,7 +23,9 @@ The online version is updated whenever changes are published. Reload the page to
 Downloaded files and forks don't update automatically. To get the latest version, you can:
 
 * **Play online:** Open the [webport](https://ale7208.github.io/Geometry-Dash-webport/).
-* **Download the latest file:** Open [index.html](index.html) in this repository, click the download icon, and open the file in your browser.
+* **Download the latest file:** Open [`index.html`](index.html) in this repository, click the download icon, and open the file in your browser.
+
+The version update notice is only displayed when an Internet connection is available.
 
 You can delete older downloaded copies once you've switched to the new version.
 
@@ -32,7 +34,7 @@ You can delete older downloaded copies once you've switched to the new version.
 * An up-to-date web browser.
 * JavaScript enabled.
 * A compatible computer, tablet, or smartphone.
-* An Internet connection to load the game's external resources.
+* An Internet connection for the initial load and online features.
 
 ## Browser Compatibility
 
@@ -48,13 +50,6 @@ The webport is intended for modern browsers on both desktop and mobile devices.
 
 The game can also be played on mobile phones. Performance, controls, and compatibility may vary depending on your device and browser.
 
-## Notes
-
-* The game works on compatible computers, tablets, and smartphones.
-* Performance depends on your device and browser.
-* An Internet connection is required to load the game's resources.
-* Some features or controls may work differently on mobile devices.
-
 ## Game Information
 
 | Feature               | Details               |
@@ -69,23 +64,32 @@ The game can also be played on mobile phones. Performance, controls, and compati
 
 **Blank screen:** Reload the page using `Ctrl + F5`.
 
-**The game gets stuck loading:** Check your Internet connection and try again.
+**The game gets stuck loading on the first visit:** Check your Internet connection and try again.
+
+**The game won't load offline:** Make sure you're opening the downloaded `index.html` file and that you've already opened it once with an Internet connection and let the game finish loading.
 
 **Low performance:** Close other applications or try another browser.
-
-**The game won't start:** Make sure JavaScript is enabled and your browser is up to date.
 
 **Changes aren't showing up:** Force a reload with `Ctrl + F5`.
 
 **An old downloaded copy isn't working:** Try the online version or download the latest `index.html` file.
 
-If the problem continues, it could be related to your browser or the external service hosting the game.
+If the problem continues, it could be related to your browser or the service hosting the game.
 
-## Notes
+## Offline Mode and Limitations
 
-* Performance depends on your device and browser.
-* An Internet connection is required to load the game's resources.
-* Not every device or browser is guaranteed to work correctly.
+Offline mode applies only to the downloaded `index.html` file opened directly from your device's storage. It does not apply to the online version hosted on GitHub Pages, which always requires an Internet connection.
+
+Keep these limitations in mind:
+
+* **Online levels:** Searching for and accessing online levels requires an Internet connection.
+* **New songs:** Downloading new songs requires an Internet connection.
+* **Browser cache:** Offline play depends on the cached game files remaining available.
+* **Cleared site data:** If you clear your browser's cache or site data, you may need to load the game online again.
+* **Browser changes:** The cached files are not automatically shared between browsers. Open the game in the same browser you used for the initial load.
+* **Version notices:** The update notice only appears when an Internet connection is available.
+
+Offline availability depends on your browser retaining the necessary files. It is not guaranteed if the cache is cleared or the browser removes stored resources.
 
 ## Credits
 
