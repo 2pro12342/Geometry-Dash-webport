@@ -1709,6 +1709,29 @@ self.onmessage = async ({ data: e }) => {
     }
     startGame().catch(startupError);
     window.__framed = window.self !== window.top;
+    function isPageFullscreenActive() {
+      return (
+        document.fullscreenElement === document.documentElement ||
+        document.webkitFullscreenElement === document.documentElement
+      );
+    }
+    (function () {
+      const canvas = document.getElementById("canvas");
+      ["requestFullscreen", "webkitRequestFullscreen"].forEach((methodName) => {
+        const requestFullscreen = canvas[methodName];
+        if (typeof requestFullscreen !== "function") {
+          return;
+        }
+        canvas[methodName] = function () {
+          if (isPageFullscreenActive()) {
+            return Promise.reject(
+              new DOMException("Page fullscreen is already active.", "NotAllowedError"),
+            );
+          }
+          return requestFullscreen.apply(this, arguments);
+        };
+      });
+    })();
     window.addEventListener("message", function (messageEvent) {
       if (messageEvent.data === "gd-focus") {
         window.focus();
@@ -1722,8 +1745,10 @@ self.onmessage = async ({ data: e }) => {
       if (messageEvent.data === "gd-fullscreen") {
         var canvasFs = document.getElementById("canvas");
         try {
-          if (document.fullscreenElement) {
-            document.exitFullscreen();
+          if (document.fullscreenElement || document.webkitFullscreenElement) {
+            if (!isPageFullscreenActive()) {
+              document.exitFullscreen();
+            }
           } else {
             if (canvasFs) {
               var requestFullscreen =
@@ -1737,16 +1762,15 @@ self.onmessage = async ({ data: e }) => {
       }
     });
     document.addEventListener("click", function () {
-      if (document.fullscreenElement) {
+      if (document.fullscreenElement || document.webkitFullscreenElement) {
         return;
       }
       try {
-        var canvasFs = document.getElementById("canvas"),
+        var page = document.documentElement,
           requestFullscreen =
-            canvasFs &&
-            (canvasFs.requestFullscreen || canvasFs.webkitRequestFullscreen);
+            page.requestFullscreen || page.webkitRequestFullscreen;
         if (requestFullscreen) {
-          requestFullscreen.call(canvasFs);
+          requestFullscreen.call(page);
         }
       } catch (fullscreenError) {}
     }, { once: true });
