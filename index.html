@@ -876,17 +876,38 @@ self.onmessage = async ({ data: e }) => {
           ].includes(target.pathname.split("/").pop().replace(/\.php$/i, ""))
         );
       }
+      function isAccountPostRequest(method, input) {
+        const target = unwrapProxyUrl(input);
+        return (
+          method.toUpperCase() === "POST" &&
+          !!target &&
+          target.pathname
+            .split("/")
+            .pop()
+            .replace(/\.php$/i, "")
+            .toLowerCase()
+            .includes("gjaccount")
+        );
+      }
       const isEmptyOrMinusOne = (body) => body === "" || body === "-1";
       window.fetch = async function (resource, options) {
         const requestUrl = resource instanceof Request ? resource.url : resource,
-          shouldRetryEmptyBody = isDatabaseFailoverEndpoint(requestUrl),
           gameProxyRequest = isGameProxyRequest(resource);
-        const urls = buildCandidateUrls(requestUrl);
+        let urls = buildCandidateUrls(requestUrl);
         if (!urls) {
           return nativeFetch(resource, options);
         }
         const request = new Request(resource, options),
-          signal = request.signal;
+          signal = request.signal,
+          accountPostRequest = isAccountPostRequest(
+            request.method,
+            request.url,
+          ),
+          shouldRetryEmptyBody =
+            !accountPostRequest && isDatabaseFailoverEndpoint(requestUrl);
+        if (accountPostRequest) {
+          urls = urls.slice(0, 1);
+        }
         signal.throwIfAborted();
         const bodyBuffer = request.body
           ? await request.clone().arrayBuffer()
@@ -899,7 +920,7 @@ self.onmessage = async ({ data: e }) => {
                 timeoutController.abort(
                   new DOMException("Proxy timed out", "TimeoutError"),
                 ),
-              gameProxyRequest ? 8000 : 30000,
+              accountPostRequest ? 60000 : gameProxyRequest ? 8000 : 30000,
             );
           try {
             const candidateRequest = new Request(urls[attempt], request.clone()),
@@ -960,8 +981,13 @@ self.onmessage = async ({ data: e }) => {
           this._generation++;
           this._xhr.abort();
           this._urls = buildCandidateUrls(url);
+          this._accountPostRequest = isAccountPostRequest(method, url);
+          if (this._accountPostRequest && this._urls) {
+            this._urls = this._urls.slice(0, 1);
+          }
           this._gameProxyRequest = isGameProxyRequest(url);
-          this._retryEmptyBody = isDatabaseFailoverEndpoint(url);
+          this._retryEmptyBody =
+            !this._accountPostRequest && isDatabaseFailoverEndpoint(url);
           this._args = [
             method,
             this._urls ? this._urls[0] : url,
@@ -1014,9 +1040,11 @@ self.onmessage = async ({ data: e }) => {
               bufferedUploadEvents = [];
             let lastProgress = null;
             if (usesFailover && asyncMode) {
-              xhr.timeout = this._gameProxyRequest
-                ? 8000
-                : savedSettings.timeout || 30000;
+              xhr.timeout = this._accountPostRequest
+                ? 60000
+                : this._gameProxyRequest
+                  ? 8000
+                  : savedSettings.timeout || 30000;
             }
             const finish = (outcome) => {
               if (this._aborted || generation !== this._generation) {
