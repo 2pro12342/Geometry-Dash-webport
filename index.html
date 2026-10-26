@@ -1094,15 +1094,15 @@ errorObserver.observe(overlay,{attributes:true,attributeFilter:['class']});
 if(overlay.classList.contains('on'))hideForError();
 if(document.body.classList.contains('playing'))complete();
 window.addEventListener('load',function(){gdStart();});
-setInterval(function(){if(window.__gdRuntimeReady&&!document.hidden)scheduleSave(true);},60000);
-function saveOnExit(){
+setInterval(function(){if(window.__gdRuntimeReady&&!document.hidden)scheduleSave(true);},120000);
+window.addEventListener('beforeunload',function(e){
 if(!window.__gdRuntimeReady)return;
 if(gdSaveTimer)clearTimeout(gdSaveTimer);
 gdSaveTimer=null;
 performSave();
-}
-window.addEventListener('beforeunload',saveOnExit);
-window.addEventListener('pagehide',saveOnExit);
+e.preventDefault();
+e.returnValue='';
+});
 document.addEventListener('contextmenu',function(e){e.preventDefault();});
 function firstPointerDown(){
 document.removeEventListener('pointerdown',firstPointerDown,true);
