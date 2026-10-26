@@ -1095,12 +1095,14 @@ if(overlay.classList.contains('on'))hideForError();
 if(document.body.classList.contains('playing'))complete();
 window.addEventListener('load',function(){gdStart();});
 setInterval(function(){if(window.__gdRuntimeReady&&!document.hidden)scheduleSave(true);},60000);
-window.addEventListener('pagehide',function(){
+function saveOnExit(){
 if(!window.__gdRuntimeReady)return;
 if(gdSaveTimer)clearTimeout(gdSaveTimer);
 gdSaveTimer=null;
 performSave();
-});
+}
+window.addEventListener('beforeunload',saveOnExit);
+window.addEventListener('pagehide',saveOnExit);
 document.addEventListener('contextmenu',function(e){e.preventDefault();});
 function firstPointerDown(){
 document.removeEventListener('pointerdown',firstPointerDown,true);
