@@ -476,11 +476,14 @@ setProgress(100);
 var gdSaveTimer = null;
 var gdLastSave = 0;
 function performSave() {
+try {
+if (Module._gd_request_save) Module._gd_request_save();
 gdLastSave = Date.now();
-try { if (Module._gd_request_save) Module._gd_request_save(); } catch (e) { console.error('Failed to save progress:', e); }
+saveAppData();
+} catch (e) { console.error('Failed to save progress:', e); }
 }
 function scheduleSave(now) {
-if (!window.__gdRuntimeReady) return;
+if (!window.__gdRuntimeReady || !window.__gdSavesRestored) return;
 if (gdSaveTimer) clearTimeout(gdSaveTimer);
 gdSaveTimer = setTimeout(function () {
 gdSaveTimer = null;
@@ -644,19 +647,36 @@ window.addEventListener('unhandledrejection', function (e) {
 });
 function restoreSaves(then) {
 var called = false;
-function finish() { if (!called) { called = true; then(); } }
-setTimeout(finish, 3000);
+var db = null;
+function finish() {
+if (called) return;
+called = true;
+if (db) db.close();
+then();
+}
 try {
 var req = indexedDB.open('gdwasm_saves', 1);
-req.onupgradeneeded = function () { req.result.createObjectStore('files'); };
-req.onerror = function () { say('[persist] idb open failed'); finish(); };
+req.onupgradeneeded = function () {
+if (!req.result.objectStoreNames.contains('files'))
+req.result.createObjectStore('files');
+};
+req.onerror = function () { say('[persist] idb open failed: ' + req.error); finish(); };
+req.onblocked = function () {
+say('[persist] idb open blocked; starting without restored data');
+finish();
+};
 req.onsuccess = function () {
+if (called) { req.result.close(); return; }
 var store, keysReq;
 try {
-store = req.result.transaction('files', 'readonly').objectStore('files');
+db = req.result;
+store = db.transaction('files', 'readonly').objectStore('files');
 keysReq = store.getAllKeys();
-} catch (e) { finish(); return; }
-keysReq.onerror = finish;
+} catch (e) { say('[persist] restore transaction failed: ' + e); finish(); return; }
+keysReq.onerror = function () {
+say('[persist] restore keys failed: ' + keysReq.error);
+finish();
+};
 keysReq.onsuccess = function () {
 var keys = keysReq.result || [];
 say('[persist] restore: ' + keys.length + ' file(s) in DB' +
@@ -666,10 +686,13 @@ var pending = keys.length;
 function one() { if (--pending === 0) finish(); }
 keys.forEach(function (k) {
 var g = store.get(k);
-g.onerror = one;
+g.onerror = function () {
+say('[persist] restore read ' + k + ': ' + g.error);
+one();
+};
 g.onsuccess = function () {
 try {
-if (g.result && g.result.byteLength) {
+if (g.result !== undefined && g.result !== null) {
 var s = String(k);
 var base = s.indexOf('AppData/') === 0 ? '/' : '/Resources/';
 var parts = s.split('/'), cur = base.replace(/\/$/, '');
@@ -687,6 +710,84 @@ one();
 };
 };
 } catch (e) { finish(); }
+}
+function saveAppData() {
+var fs = Module.FS, files = [], paths = Object.create(null);
+if (!fs || !fs.analyzePath || !fs.analyzePath('/AppData').exists) return;
+function scan(directory, keyPrefix) {
+var entries = fs.readdir(directory);
+for (var i = 0; i < entries.length; ++i) {
+var name = entries[i];
+if (name === '.' || name === '..') continue;
+var path = directory === '/' ? '/' + name : directory + '/' + name;
+var key = keyPrefix + '/' + name;
+var stat = fs.lstat ? fs.lstat(path) : fs.stat(path);
+if (fs.isLink && fs.isLink(stat.mode)) continue;
+if (fs.isDir(stat.mode)) {
+scan(path, key);
+} else if (fs.isFile(stat.mode)) {
+var bytes = fs.readFile(path);
+var copy = new Uint8Array(bytes.length);
+copy.set(bytes);
+files.push({ key: key, bytes: copy.buffer });
+paths[key] = true;
+}
+}
+}
+try {
+scan('/AppData', 'AppData');
+} catch (e) {
+console.error('Failed to read AppData for saving:', e);
+return;
+}
+var req;
+try { req = indexedDB.open('gdwasm_saves', 1); }
+catch (e) { console.error('Failed to open save database:', e); return; }
+req.onupgradeneeded = function () {
+if (!req.result.objectStoreNames.contains('files'))
+req.result.createObjectStore('files');
+};
+req.onerror = function () {
+console.error('Failed to open save database:', req.error);
+};
+req.onsuccess = function () {
+var db = req.result, tx;
+try {
+tx = db.transaction('files', 'readwrite');
+var store = tx.objectStore('files');
+var keysReq = store.getAllKeys();
+keysReq.onsuccess = function () {
+try {
+files.forEach(function (file) { store.put(file.bytes, file.key); });
+keysReq.result.forEach(function (key) {
+if (typeof key === 'string' && key.indexOf('AppData/') === 0 &&
+!paths[key]) store.delete(key);
+});
+} catch (e) {
+console.error('Failed to queue AppData save:', e);
+try { tx.abort(); }
+catch (abortError) { console.error('Failed to abort AppData save:', abortError); }
+}
+};
+keysReq.onerror = function () {
+console.error('Failed to read saved file list:', keysReq.error);
+try { tx.abort(); }
+catch (abortError) { console.error('Failed to abort AppData save:', abortError); }
+};
+tx.oncomplete = function () {
+say('[persist] saved ' + files.length + ' AppData file(s): ' +
+files.map(function (file) { return file.key; }).join(', '));
+db.close();
+};
+tx.onerror = tx.onabort = function () {
+console.error('Failed to save AppData:', tx.error);
+db.close();
+};
+} catch (e) {
+console.error('Failed to save AppData:', e);
+db.close();
+}
+};
 }
 var Module = {
 canvas: document.getElementById('canvas'),
@@ -731,6 +832,8 @@ setProgress(76);
 },
 onRuntimeInitialized: function () {
 window.__gdRuntimeReady = true;
+if (!/[?&]noauto/.test(location.search))
+setInterval(function () { scheduleSave(false); }, 30000);
 if (Module._gd_log_set) Module._gd_log_set(GD_DEBUG ? 1 : 0);
 if (/[?&]noauto/.test(location.search) && Module._gd_autosave_set)
 Module._gd_autosave_set(0);
@@ -742,6 +845,7 @@ say('FS.chdir failed: ' + e);
 }
 setTimeout(function () {
 restoreSaves(function () {
+window.__gdSavesRestored = true;
 setProgress(88);
 try {
 const r = Module._gd_boot();
