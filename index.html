@@ -773,6 +773,146 @@ say('gd_boot exception: ' + e);
 }, 100);
 }
 };
+(function () {
+var nativeFetch = window.fetch;
+var nativeXhrOpen = XMLHttpRequest.prototype.open;
+var audioObjectUrls = new WeakMap();
+function audioFilename(url) {
+var path = String(url).replace(/\\/g, '/');
+try { path = decodeURIComponent(path); }
+catch (e) {
+say('[audio] invalid encoded song path: ' + url);
+return null;
+}
+path = path.replace(/\\/g, '/').split(/[?#]/)[0];
+var match = /(?:^|\/)([^/]+\.mp3)$/i.exec(path);
+return match ? match[1] : null;
+}
+function normalizeFsPath(path) {
+return String(path).replace(/\\/g, '/').replace(/\/+/g, '/').replace(/\/$/, '') || '/';
+}
+function readLocalSong(url) {
+var filename = audioFilename(url);
+var fs = Module.FS;
+if (!filename || !fs || !fs.analyzePath || !fs.readFile) return null;
+var cwd = typeof fs.cwd === 'function' ? fs.cwd() : '/';
+var roots = ['/Resources', '/', '/AppData', cwd];
+var tried = [];
+var scanErrors = [];
+var checked = Object.create(null);
+function readPath(path) {
+path = normalizeFsPath(path);
+if (checked[path]) return null;
+checked[path] = true;
+tried.push(path);
+if (!fs.analyzePath(path).exists) return null;
+try {
+return { path: path, bytes: fs.readFile(path) };
+} catch (e) {
+console.error('[audio] failed to read saved song ' + path, e);
+throw e;
+}
+}
+for (var i = 0; i < roots.length; ++i) {
+var direct = readPath(normalizeFsPath(roots[i]) + '/' + filename);
+if (direct) return direct;
+}
+var mp3Files = [];
+var visited = Object.create(null);
+function scan(directory) {
+directory = normalizeFsPath(directory);
+if (visited[directory]) return null;
+visited[directory] = true;
+tried.push(directory);
+var entries;
+try {
+entries = fs.readdir(directory);
+} catch (e) {
+scanErrors.push({ path: directory, error: String(e) });
+return null;
+}
+for (var j = 0; j < entries.length; ++j) {
+var name = entries[j];
+if (name === '.' || name === '..') continue;
+var path = directory === '/' ? '/' + name : directory + '/' + name;
+var stat;
+try {
+stat = fs.lstat ? fs.lstat(path) : fs.stat(path);
+} catch (e) {
+scanErrors.push({ path: path, error: String(e) });
+continue;
+}
+if (fs.isLink && fs.isLink(stat.mode)) continue;
+if (fs.isDir(stat.mode)) {
+var found = scan(path);
+if (found) return found;
+} else if (/\.mp3$/i.test(name)) {
+if (name.toLowerCase() === filename.toLowerCase()) {
+var song = readPath(path);
+if (song) return song;
+}
+mp3Files.push(path);
+}
+}
+return null;
+}
+var recursive = scan('/');
+if (recursive) return recursive;
+console.warn('[audio] song not found in virtual FS', {
+filename: filename,
+tried: tried,
+mp3Files: mp3Files,
+scanErrors: scanErrors
+});
+return null;
+}
+window.fetch = function (input, init) {
+var url = typeof input === 'string' ? input : input && (input.url || input.href);
+var method = (init && init.method) || (input && input.method) || 'GET';
+var normalizedUrl = typeof input === 'string' ? input.replace(/\\/g, '/') : input;
+if (url && String(method).toUpperCase() === 'GET') {
+var song = readLocalSong(url);
+if (song) return Promise.resolve(new Response(song.bytes, {
+status: 200,
+headers: { 'Content-Type': 'audio/mpeg' }
+}));
+}
+if (normalizedUrl !== input) return nativeFetch.call(this, normalizedUrl, init);
+return nativeFetch.apply(this, arguments);
+};
+function releaseAudioUrl(xhr) {
+var url = audioObjectUrls.get(xhr);
+if (url) {
+URL.revokeObjectURL(url);
+audioObjectUrls.delete(xhr);
+}
+}
+XMLHttpRequest.prototype.open = function (method, url) {
+releaseAudioUrl(this);
+var args = Array.prototype.slice.call(arguments);
+var song = /^GET$/i.test(method) ? readLocalSong(url) : null;
+if (song) {
+var blobUrl = URL.createObjectURL(new Blob([song.bytes], { type: 'audio/mpeg' }));
+audioObjectUrls.set(this, blobUrl);
+var xhr = this;
+function cleanup() {
+if (audioObjectUrls.get(xhr) === blobUrl) releaseAudioUrl(xhr);
+}
+['loadend', 'abort', 'error', 'timeout'].forEach(function (event) {
+xhr.addEventListener(event, cleanup, { once: true });
+});
+args[1] = blobUrl;
+} else if (typeof url === 'string') {
+args[1] = url.replace(/\\/g, '/');
+}
+try {
+return nativeXhrOpen.apply(this, args);
+} catch (e) {
+releaseAudioUrl(this);
+throw e;
+}
+};
+})();
 var started = false;
 function gdStart() {
 if (started) return;
@@ -1094,7 +1234,6 @@ errorObserver.observe(overlay,{attributes:true,attributeFilter:['class']});
 if(overlay.classList.contains('on'))hideForError();
 if(document.body.classList.contains('playing'))complete();
 window.addEventListener('load',function(){gdStart();});
-setInterval(function(){if(window.__gdRuntimeReady&&!document.hidden)scheduleSave(true);},120000);
 window.addEventListener('beforeunload',function(e){
 if(!window.__gdRuntimeReady)return;
 if(gdSaveTimer)clearTimeout(gdSaveTimer);
